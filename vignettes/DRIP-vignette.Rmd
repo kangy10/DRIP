@@ -89,7 +89,7 @@ image(deblur$deblurred, col = gray(c(0:255)/255))
 
 The `jpex()` function requires a bandwidth value and the noise level. Both can be determined by the `cv.jpex()` function. 
 ```{r cv-jpex}
-cv.out <- cv.jpex(image = stopsign, bandwidths = c(2, 3), ncpus = 2)
+cv.out <- cv.jpex(image = stopsign, bandwidths = c(2, 3), ncpus = 1)
 print(cv.out, type = "all")
 ```
 
