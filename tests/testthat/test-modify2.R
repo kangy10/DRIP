@@ -10,7 +10,7 @@ test_that("only accept proper input", {
   edge <- matrix(0, 9, 9)
   edge[4:5, ] <- 1
   edge[8, 8] <- 1
-  expect_no_error(modify2(bandwidth = 100, edge = edge, plot = TRUE))
+  expect_no_error(modify2(bandwidth = 3, edge = edge, plot = TRUE))
   edge <- matrix(0, 9, 9)
   edge[1, 1] <- 1
   edge[9, 9] <- 1
@@ -24,7 +24,7 @@ test_that("only accept proper input", {
   edge[1, 9] <- 1
   edge[9, 1] <- 1
   edge[5, 5] <- 1
-  expect_no_error(modify2(bandwidth = 100, edge = edge, plot = TRUE))
+  expect_no_error(modify2(bandwidth = 3, edge = edge, plot = TRUE))
   edge <- matrix(0, 9, 9)
   edge[1, 5] <- 1
   edge[9, 5] <- 1
