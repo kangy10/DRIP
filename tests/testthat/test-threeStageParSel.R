@@ -47,7 +47,9 @@ test_that("only accept proper input", {
                "nboot must be specified when blur is TRUE")
   expect_error(threeStageParSel(image = matrix(0, 2, 2), bandwidth = 2, edge1 = matrix(0, 2, 2), edge2 = matrix(0, 2, 2), nboot = 1:2, blur = TRUE),
                "nboot must be an integer number")
-  expect_no_error(threeStageParSel(image = matrix(rnorm(100), 10, 10), bandwidth = 2:3, edge1 = matrix(0, 10, 10),
+  set.seed(100)
+  img <- matrix(rnorm(100), 10, 10)
+  expect_no_error(threeStageParSel(image = img, bandwidth = 2:3, edge1 = matrix(0, 10, 10),
                              edge2 = matrix(0, 10, 10)))
   edge1 <- matrix(0, 10, 10)
   edge1[5:8, 5] <- 1
@@ -55,9 +57,9 @@ test_that("only accept proper input", {
   edge2 <- matrix(0, 10, 10)
   edge2[5:8, 8] <- 1
   edge2[7, 1:3] <- 1
-  expect_no_error(threeStageParSel(image = matrix(rnorm(100), 10, 10), bandwidth = 2:3, edge1 = edge1, nboot = 1,
+  expect_no_error(threeStageParSel(image = img, bandwidth = 2:3, edge1 = edge1, nboot = 1,
                              edge2 = edge2, blur = TRUE))
-  expect_no_error(threeStageParSel(image = matrix(rnorm(100), 10, 10), bandwidth = 2:3, edge1 = edge1, nboot = 1,
+  expect_no_error(threeStageParSel(image = img, bandwidth = 2:3, edge1 = edge1, nboot = 1,
                                    edge2 = edge2, blur = FALSE))
 })
 

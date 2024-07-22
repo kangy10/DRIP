@@ -14,6 +14,7 @@ test_that("only accept proper input", {
   expect_error(jpex(image = matrix(0, 2, 2), bandwidth = 2, sigma = -1.2, alpha = 0.1), "sigma must be positive")
   img <- matrix(0, 9, 9)
   img[1:4, 1:4] <- 1
+  set.seed(100)
   img <- img + matrix(rnorm(9 * 9, sd = 0.1), 9, 9)
   expect_no_error(jpex(image = img, bandwidth = 2, sigma = 0.1, alpha = 0.1))
 })

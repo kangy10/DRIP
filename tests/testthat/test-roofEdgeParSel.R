@@ -20,6 +20,7 @@ test_that("only accept proper input", {
 })
 
 test_that("return an S3 class Edge_Parameters", {
+  set.seed(100)
   parSel <- roofEdgeParSel(image = matrix(rnorm(100), 10, 10), bandwidth = 3, thresh = 5,
                            nboot = 1, edge1 = matrix(0, 10, 10), blur = FALSE)
   expect_s3_class(parSel, "Edge_Parameters", exact = TRUE)

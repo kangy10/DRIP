@@ -23,10 +23,12 @@ test_that("only accept proper input", {
   edge2[7, 7] <- 1
   edge2[8, 8] <- 1
   edge2[9, 9] <- 1
-  expect_no_error(threeStage(image = matrix(rnorm(100), 10, 10), bandwidth = 2, edge1 = edge1, edge2 = edge2))
-  expect_no_error(threeStage(image = matrix(rnorm(100), 10, 10), bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = TRUE))
-  expect_no_error(threeStage(image = matrix(rnorm(100), 10, 10), bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = TRUE, plot = TRUE))
-  expect_no_error(threeStage(image = matrix(rnorm(100), 10, 10), bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = FALSE, plot = TRUE))
+  set.seed(100)
+  img <- matrix(rnorm(100), 10, 10)
+  expect_no_error(threeStage(image = img, bandwidth = 2, edge1 = edge1, edge2 = edge2))
+  expect_no_error(threeStage(image = img, bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = TRUE))
+  expect_no_error(threeStage(image = img, bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = TRUE, plot = TRUE))
+  expect_no_error(threeStage(image = img, bandwidth = 2, edge1 = edge1, edge2 = edge2, blur = FALSE, plot = TRUE))
 })
 
 test_that("edges and image are of the same size", {

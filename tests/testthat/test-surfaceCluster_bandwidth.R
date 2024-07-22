@@ -42,6 +42,8 @@ test_that("only accept proper input", {
                "sig.level must be a number between 0 and 1")
   expect_error(surfaceCluster_bandwidth(image = matrix(0, 2, 2), bandwidths = 2, sig.level = 0.7, sigma = 0.1, phi0 = 0.2,
                                         mean_std_abs = 1.2, relwt = 1.2), "relwt must be a number between 0 and 1")
-  expect_no_error(surfaceCluster_bandwidth(image = matrix(rnorm(10^4), 100, 100), bandwidths = 3, sig.level = 0.7, blur = FALSE))
-  expect_no_error(surfaceCluster_bandwidth(image = matrix(rnorm(10^4), 100, 100), bandwidths = 3, sig.level = 0.7, blur = TRUE))
+  set.seed(100)
+  img <- matrix(rnorm(10^4), 100, 100)
+  expect_no_error(surfaceCluster_bandwidth(image = img, bandwidths = 3, sig.level = 0.7, blur = FALSE))
+  expect_no_error(surfaceCluster_bandwidth(image = img, bandwidths = 3, sig.level = 0.7, blur = TRUE))
 })

@@ -29,6 +29,8 @@ test_that("only accept proper input type", {
 })
 
 test_that("returns S3 class JPEX_Parameters", {
-  out <- cv.jpex(matrix(rnorm(100), 10, 10), c(2,3))
+  set.seed(100)
+  img <- matrix(rnorm(100), 10, 10)
+  out <- cv.jpex(img, c(2,3))
   expect_s3_class(out, class = "JPEX_Parameters", exact = TRUE)
 })
