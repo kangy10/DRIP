@@ -11,6 +11,7 @@ test_that("only accept proper input", {
                "sig.level must be a number between 0 and 1")
   img <- matrix(0, 100, 100)
   img[45:55, 50:70] <- 3
+  set.seed(100)
   img <- img + matrix(rnorm(10^4), 100, 100)
   expect_no_error(surfaceCluster(image = img, bandwidth = 3, sig.level = 0.7, blur = FALSE))
   expect_no_error(surfaceCluster(image = img, bandwidth = 3, sig.level = 0.7, blur = TRUE))
