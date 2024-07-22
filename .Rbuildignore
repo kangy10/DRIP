@@ -1,2 +1,3 @@
 ^\.github$
 ^DRIP.Rproj$
+^codecov\.yml$
