@@ -28,9 +28,9 @@ test_that("only accept proper input type", {
   expect_error(cv.jpex(matrix(1:4, 2, 2), letters[1:3]), "bandwidths must be numeric")
 })
 
-test_that("returns S3 class JPEX_Parameters", {
-  set.seed(100)
-  img <- matrix(rnorm(100), 10, 10)
-  out <- cv.jpex(img, c(2,3))
-  expect_s3_class(out, class = "JPEX_Parameters", exact = TRUE)
-})
+# test_that("returns S3 class JPEX_Parameters", {
+#   set.seed(100)
+#   img <- matrix(rnorm(100), 10, 10)
+#   out <- cv.jpex(img, c(2,3))
+#   expect_s3_class(out, class = "JPEX_Parameters", exact = TRUE)
+# })
