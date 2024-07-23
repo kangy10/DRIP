@@ -1,3 +1,5 @@
 ^\.github$
 ^DRIP.Rproj$
 ^codecov\.yml$
+^.*\.Rproj$
+^\.Rproj\.user$
