@@ -10,7 +10,8 @@ class(foo) <- "JPLLK_Parameters"
 
 # The print method for S3 class
 
-print.JPLLK_Parameters <- function(x, type = c("bandwidth", "sigma", "all"), ...) {
+print.JPLLK_Parameters <- function(x, type = c("bandwidth", "sigma", "all"),
+                                   ...) {
   stopifnot(class(x) == "JPLLK_Parameters")
   if (type == "bandwidth") {
     cat("The selected bandwidth: ", x$bandwidth, "\n")
@@ -59,13 +60,14 @@ JPLLK_surface <- function(image, bandwidth, plot = FALSE){
     n1 <- dim(image)[1]
     z <- matrix(as.double(image), ncol = n1)
     n_band <- length(bandwidth)
-    out <- .Fortran(C_jp_llk_cv, n = as.integer(n1 - 1), obsImg = z, nband = n_band,
-                   bandwidth = as.integer(bandwidth), cv = rep(as.double(0), n_band))
+    out <- .Fortran(C_jp_llk_cv, n = as.integer(n1 - 1), obsImg = z,
+                    nband = n_band, bandwidth = as.integer(bandwidth),
+                    cv = rep(as.double(0), n_band))
     k.cv <- out$cv
     cv.band <- mean(bandwidth[k.cv ==  min(k.cv)])
     jp.llk <- .Fortran(C_jp_llk_fit, n = as.integer(n1 - 1),
-                      obsImg = z, bandwidth = as.integer(cv.band), fitted = z, resid
-                      = z, sigma = as.double(0))
+                      obsImg = z, bandwidth = as.integer(cv.band), fitted = z,
+                      resid = z, sigma = as.double(0))
     out1 <- list(fitted = jp.llk$fitted, bandwidth = cv.band, resid
                  = jp.llk$resid, sigma = jp.llk$sigma)
     class(out1) <- "JPLLK_Parameters"

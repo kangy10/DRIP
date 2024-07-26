@@ -4,12 +4,15 @@
 # Creator: Yicheng Kang
 
 # S3 Class
-foo <- list(cv_scores = matrix(c(1.2, 1.3), nrow = 1), input = as.integer(3:4), bandwidth = as.integer(4))
+foo <- list(cv_scores = matrix(c(1.2, 1.3), nrow = 1), input = as.integer(3:4),
+            bandwidth = as.integer(4))
 class(foo) <- "Three_Stage_Parameters"
 
 # The print method for the S3 class
 
-print.Three_Stage_Parameters <- function(x, type = c("cv_scores", "bandwidth", "all"), ...) {
+print.Three_Stage_Parameters <- function(x,
+                                         type = c("cv_scores", "bandwidth",
+                                                  "all"), ...) {
   stopifnot(class(x) == "Three_Stage_Parameters")
   if (!(type %in% c("cv_scores", "bandwidth", "all"))) {
     stop("Wrong type value")
@@ -42,10 +45,12 @@ summary.Three_Stage_Parameters <- function(object, ...) {
 
 plot.Three_Stage_Parameters <- function(x, ...) {
   stopifnot(class(x) == "Three_Stage_Parameters")
-  plot.default(x = x$input, y = x$cv_scores, type = "b", xlab = "Bandwidth", ylab = "(MSE)CV Scores")
+  plot.default(x = x$input, y = x$cv_scores, type = "b", xlab = "Bandwidth",
+               ylab = "(MSE)CV Scores")
 }
 
-threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot, blur = FALSE){
+threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot,
+                             blur = FALSE){
   if (!is.matrix(image) || !is.matrix(edge1) || !is.matrix(edge2)) {
     stop("image, edge1 and edge2 must be a matrix")
   } else {
@@ -75,8 +80,10 @@ threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot, blur = FALSE
   edge2 <- matrix(as.integer(edge2), ncol = n1)
   n_band <- length(bandwidth)
   if (blur == FALSE) {
-    out <- .Fortran(C_denoise_3stage_bandwidth, n = as.integer(n1 - 1), obsImg = z, nband = n_band,
-                    bandwidth = as.integer(bandwidth), edge1 = edge1, edge2 = edge2, cv = rep(as.double(0), n_band))
+    out <- .Fortran(C_denoise_3stage_bandwidth, n = as.integer(n1 - 1),
+                    obsImg = z, nband = n_band,
+                    bandwidth = as.integer(bandwidth), edge1 = edge1,
+                    edge2 = edge2, cv = rep(as.double(0), n_band))
     k.cv <- out$cv
     band_sel <- mean(bandwidth[k.cv ==  min(k.cv)])
     out.mat <- matrix(0, ncol = n_band, nrow = 1)
@@ -91,8 +98,10 @@ threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot, blur = FALSE
     if (length(nboot) > 1)
       stop("nboot must be an integer number.")
     n_boot <- as.integer(nboot)
-    out <- .Fortran(C_deblur_3stage_bandwidth, n = as.integer(n1 - 1), obsImg = z, nband = n_band,
-                    bandwidth = as.integer(bandwidth), edge1 = edge1, edge2 = edge2, nboot = n_boot,
+    out <- .Fortran(C_deblur_3stage_bandwidth, n = as.integer(n1 - 1),
+                    obsImg = z, nband = n_band,
+                    bandwidth = as.integer(bandwidth), edge1 = edge1,
+                    edge2 = edge2, nboot = n_boot,
                     msecv = rep(as.double(0), n_band))
     k.msecv <- out$msecv
     band_sel <- mean(bandwidth[k.msecv ==  min(k.msecv)])

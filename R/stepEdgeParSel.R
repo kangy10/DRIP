@@ -5,12 +5,14 @@
 
 # S3 Class
 
-foo <- list(dKQ = matrix(0.0, nrow = 2, ncol = 2), bandwidth = as.integer(3), threshold = 1.2)
+foo <- list(dKQ = matrix(0.0, nrow = 2, ncol = 2), bandwidth = as.integer(3),
+            threshold = 1.2)
 class(foo) <- "Edge_Parameters"
 
 # The print method for S3 class
 
-print.Edge_Parameters <- function(x, type = c("matrix", "parameters", "all"), ...) {
+print.Edge_Parameters <- function(x, type = c("matrix", "parameters", "all"),
+                                  ...) {
   stopifnot(class(x) == "Edge_Parameters")
   if (!(type %in% c("matrix", "parameters", "all"))) {
     stop("Wrong type value")

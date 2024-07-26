@@ -3,7 +3,8 @@
 # Creator: Yicheng Kang
 # Date: Sep 13, 2015
 
-roofEdgeParSel <- function(image, bandwidth, thresh, nboot, edge1, blur = FALSE) {
+roofEdgeParSel <- function(image, bandwidth, thresh, nboot, edge1,
+                           blur = FALSE) {
   if (!is.matrix(image))
     stop("image data must be a matrix")
   n1 <- as.integer(dim(image)[1])
@@ -35,14 +36,14 @@ roofEdgeParSel <- function(image, bandwidth, thresh, nboot, edge1, blur = FALSE)
   nthresh <- length(u)
   out.mat <- array(as.double(0), c(nband, nthresh))
   if (blur == FALSE) {
-    out <- .Fortran(C_roofedgeparsel_denoise, n=as.integer(n-1), obsImg=z, nband=nband,
-                    bandwidth=bandwidth, nthresh=nthresh, thresh=u, nboot=nboot, edge1=edge1,
-                    dKQ=out.mat)
+    out <- .Fortran(C_roofedgeparsel_denoise, n = as.integer(n - 1), obsImg = z,
+                    nband = nband, bandwidth = bandwidth, nthresh = nthresh,
+                    thresh = u, nboot = nboot, edge1 = edge1, dKQ = out.mat)
   }
   else {
-    out <- .Fortran(C_roofedgeparsel_deblur, n=as.integer(n-1), obsImg=z, nband=nband,
-                    bandwidth=bandwidth, nthresh=nthresh, thresh=u, nboot=nboot, edge1=edge1,
-                    dKQ=out.mat)
+    out <- .Fortran(C_roofedgeparsel_deblur, n = as.integer(n - 1), obsImg = z,
+                    nband = nband, bandwidth = bandwidth, nthresh = nthresh,
+                    thresh = u, nboot = nboot, edge1 = edge1, dKQ = out.mat)
   }
   out.mat <- out$dKQ
   rownames(out.mat) <- paste('bandwidth=', bandwidth, sep='')

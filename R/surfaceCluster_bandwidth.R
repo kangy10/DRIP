@@ -4,12 +4,19 @@
 # Creator: Yicheng Kang
 
 # The print method for S3 class
-foo <- list(cv_dataframe = data.frame(x = 1:2, y = 3:4), bandwidth = as.integer(3), sigma = 0.0, phi0 = 1.0, mean_std_abs = 1.0)
+foo <- list(cv_dataframe = data.frame(x = 1:2, y = 3:4),
+            bandwidth = as.integer(3), sigma = 0.0, phi0 = 1.0,
+            mean_std_abs = 1.0)
 class(foo) <- "Surface_Cluster_Parameters"
 
-print.Surface_Cluster_Parameters <- function(x, type = c("cv_scores", "bandwidth", "sigma", "phi0", "mean_std_abs", "all"), ...) {
+print.Surface_Cluster_Parameters <- function(x,
+                                             type = c("cv_scores", "bandwidth",
+                                                      "sigma", "phi0",
+                                                      "mean_std_abs", "all"),
+                                             ...) {
   stopifnot(class(x) == "Surface_Cluster_Parameters")
-  if (!(type %in% c("cv_scores", "bandwidth", "sigma", "phi0", "mean_std_abs", "all"))) {
+  if (!(type %in% c("cv_scores", "bandwidth", "sigma", "phi0", "mean_std_abs",
+                    "all"))) {
     stop("Wrong type value.")
   } else {
     if (type == "cv_scores") {
@@ -53,10 +60,12 @@ summary.Surface_Cluster_Parameters <- function(object, ...) {
 
 plot.Surface_Cluster_Parameters <- function(x, ...) {
   stopifnot(class(x) == "Surface_Cluster_Parameters")
-  plot.default(x = x$cv_dataframe[, 1], y = x$cv_dataframe[, 2], type = "b", xlab = "Bandwidth", ylab = "(Modified) CV")
+  plot.default(x = x$cv_dataframe[, 1], y = x$cv_dataframe[, 2], type = "b",
+               xlab = "Bandwidth", ylab = "(Modified) CV")
 }
 
-surfaceCluster_bandwidth <- function(image, bandwidths, sig.level, sigma, phi0, mean_std_abs, relwt = 0.5, cw = 3,
+surfaceCluster_bandwidth <- function(image, bandwidths, sig.level, sigma, phi0,
+                                     mean_std_abs, relwt = 0.5, cw = 3,
                                      blur = FALSE){
   if (!is.matrix(image)) {
     stop("image data must be a matrix")
@@ -83,7 +92,9 @@ surfaceCluster_bandwidth <- function(image, bandwidths, sig.level, sigma, phi0, 
     resid <- jp.llk$resid
     sigma <- as.double(jp.llk$sigma)
     std_resid <- resid / sigma
-    phi0 <- as.double(density(x = std_resid, bw = 1.06*n1^(-2/5), kernel = "gaussian", n = 4, from = -1, to = 2)$y[2])
+    phi0 <- as.double(density(x = std_resid, bw = 1.06*n1^(-2/5),
+                              kernel = "gaussian", n = 4, from = -1,
+                              to = 2)$y[2])
     mean_std_abs <- as.double(mean(abs(std_resid)))
   }
   nband <- length(bandwidths)
@@ -94,23 +105,29 @@ surfaceCluster_bandwidth <- function(image, bandwidths, sig.level, sigma, phi0, 
   cv_cty <- cv
   cv_jump <- cv
   if (blur == FALSE) {
-    out <- .Fortran(C_cluster_cwm_denoise_bandwidth, n = as.integer(n1 - 1), obsImg = z, nband = nband,
-                    bandwidths = bandwidths, zq = zq, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs, cw = cw,
-                    bandwidth_hat = bandwidth_hat, cv = cv)
+    out <- .Fortran(C_cluster_cwm_denoise_bandwidth, n = as.integer(n1 - 1),
+                    obsImg = z, nband = nband, bandwidths = bandwidths, zq = zq,
+                    sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs,
+                    cw = cw, bandwidth_hat = bandwidth_hat, cv = cv)
   }
   else {
-    out <- .Fortran(C_cluster_cwm_deblur_bandwidth, n = as.integer(n1 - 1), obsImg = z, nband = nband,
-                    bandwidths = bandwidths, zq = zq, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs, cw = cw,
-                    relwt = as.double(relwt), bandwidth_hat = bandwidth_hat, cv = cv, cv_jump = cv_jump, cv_cty = cv_cty)
+    out <- .Fortran(C_cluster_cwm_deblur_bandwidth, n = as.integer(n1 - 1),
+                    obsImg = z, nband = nband, bandwidths = bandwidths, zq = zq,
+                    sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs,
+                    cw = cw, relwt = as.double(relwt),
+                    bandwidth_hat = bandwidth_hat, cv = cv, cv_jump = cv_jump,
+                    cv_cty = cv_cty)
   }
 
   if (blur == FALSE){
     cv_dataframe <- data.frame(bandwidths = bandwidths, cv = out$cv)
   } else {
-    cv_dataframe <- data.frame(bandwidths = bandwidths, mcv = out$cv, cv_jump = out$cv_jump, cv_cty = out$cv_cty)
+    cv_dataframe <- data.frame(bandwidths = bandwidths, mcv = out$cv,
+                               cv_jump = out$cv_jump, cv_cty = out$cv_cty)
   }
 
-  out1 <- list(cv_dataframe = cv_dataframe, bandwidth = out$bandwidth_hat, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs)
+  out1 <- list(cv_dataframe = cv_dataframe, bandwidth = out$bandwidth_hat,
+               sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs)
   class(out1) <- "Surface_Cluster_Parameters"
 
   return(out1)

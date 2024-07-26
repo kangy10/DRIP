@@ -11,7 +11,8 @@ roofEdge <- function(image, bandwidth, thresh, edge1, blur = FALSE,
   n2 <- as.integer(dim(image)[2])
   if (n1 != n2)
     stop("image data must be a square matrix.")
-  if (!is.numeric(bandwidth) || length(bandwidth) > 1 || as.integer(bandwidth) < 1)
+  if (!is.numeric(bandwidth) || length(bandwidth) > 1 ||
+      as.integer(bandwidth) < 1)
     stop("bandwidth must be a positive integer.")
   if (!is.numeric(thresh) || length(thresh) > 1 || thresh < 0)
     stop("threshold  must be a positive number.")
@@ -29,11 +30,13 @@ roofEdge <- function(image, bandwidth, thresh, edge1, blur = FALSE,
   u <- as.double(thresh)
   if (blur == FALSE) {
     out <- .Fortran(C_roofdetect_denoise, n = as.integer(n1 - 1),
-                    obsImg = z, bandwidth = as.integer(k), thresh=u, edge1=edge1, edge2=edge2)
+                    obsImg = z, bandwidth = as.integer(k), thresh = u,
+                    edge1 = edge1, edge2 = edge2)
   }
   else {
     out <- .Fortran(C_roofdetect_deblur, n = as.integer(n1 - 1),
-                    obsImg = z, bandwidth = as.integer(k), thresh=u, edge1=edge1, edge2=edge2)
+                    obsImg = z, bandwidth = as.integer(k), thresh = u,
+                    edge1 = edge1, edge2 = edge2)
   }
   edge <- out$edge2
   if (plot == FALSE) { return(edge) }

@@ -1,8 +1,10 @@
 test_that("only accept proper input", {
-  expect_error(modify2(bandwidth = 2, edge = 1:4), "edge must be a square matrix")
+  expect_error(modify2(bandwidth = 2, edge = 1:4),
+               "edge must be a square matrix")
   expect_error(modify2(bandwidth = 2, edge = matrix(1.2, 4, 4), plot = FALSE),
                "edge can only have entry equal to 0 or 1")
-  expect_error(modify2(bandwidth = -1, edge = matrix(1, 4, 4)), "bandwidth must be a positive integer")
+  expect_error(modify2(bandwidth = -1, edge = matrix(1, 4, 4)),
+               "bandwidth must be a positive integer")
   edge <- matrix(0, 9, 9)
   edge[4:5, ] <- 1
   edge[8, 8] <- 1

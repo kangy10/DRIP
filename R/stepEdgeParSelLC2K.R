@@ -77,5 +77,6 @@ stepEdgeParSelLC2K <- function(image, bandwidth, thresh, nboot) {
   }
   paste('The selected bandwidth is', band_sel)
   paste('The selected threshold is', thresh_sel)
-  return(list(output_matrix=out.mat, selected_bandwidth=band_sel, selected_threshold=thresh_sel))
+  return(list(output_matrix=out.mat, selected_bandwidth=band_sel,
+              selected_threshold=thresh_sel))
 }

@@ -3,8 +3,8 @@
 # Date: September 05, 2017
 # Creator: Yicheng Kang
 
-surfaceCluster <- function(image, bandwidth, sig.level, sigma, phi0, mean_std_abs, cw = 3, 
-                           blur = FALSE, plot = FALSE){
+surfaceCluster <- function(image, bandwidth, sig.level, sigma, phi0,
+                           mean_std_abs, cw = 3, blur = FALSE, plot = FALSE){
   if (!is.matrix(image)) {
     stop("image data must be a matrix")
   } else {
@@ -32,23 +32,29 @@ surfaceCluster <- function(image, bandwidth, sig.level, sigma, phi0, mean_std_ab
     resid <- jp.llk$resid
     sigma <- as.double(jp.llk$sigma)
     std_resid <- resid / sigma
-    phi0 <- as.double(density(x = std_resid, bw = 1.06*n1^(-2/5), kernel = "gaussian", n = 4, from = -1, to = 2)$y[2])
+    phi0 <- as.double(density(x = std_resid, bw = 1.06*n1^(-2/5),
+                              kernel = "gaussian", n = 4, from = -1,
+                              to = 2)$y[2])
     mean_std_abs <- as.double(mean(abs(std_resid)))
   }
   k <- as.integer(bandwidth)
   cw <- as.integer(cw)
   if (blur == FALSE) {
     out <- .Fortran(C_cluster_cwm_denoise, n = as.integer(n1 - 1),
-                    obsImg = z, k = k, zq = zq, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs, cw = cw, estImg = z)
+                    obsImg = z, k = k, zq = zq, sigma = sigma, phi0 = phi0,
+                    mean_std_abs = mean_std_abs, cw = cw, estImg = z)
   }
   else {
-    out <- .Fortran(C_cluster_cwm_deblur, n = as.integer(n1 - 1), obsImg = z, k = k,
-                    zq = zq, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs, cw = cw, estImg = z)
+    out <- .Fortran(C_cluster_cwm_deblur, n = as.integer(n1 - 1), obsImg = z,
+                    k = k, zq = zq, sigma = sigma, phi0 = phi0,
+                    mean_std_abs = mean_std_abs, cw = cw, estImg = z)
   }
   if (plot == FALSE) {
-    return(list(estImg = out$estImg, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs))
+    return(list(estImg = out$estImg, sigma = sigma, phi0 = phi0,
+                mean_std_abs = mean_std_abs))
   }
   else { image(out$estImg, col = gray((0:255)/255))
-    return(list(estImg = out$estImg, sigma = sigma, phi0 = phi0, mean_std_abs = mean_std_abs))
+    return(list(estImg = out$estImg, sigma = sigma, phi0 = phi0,
+                mean_std_abs = mean_std_abs))
   }
 }
