@@ -23,12 +23,12 @@ test_that("returns S3 class Edge_Parameters", {
   parSel <- stepEdgeParSel(image = img, bandwidth = 2, thresh = c(0.1, 0.2),
                            nboot = 1)
   expect_s3_class(parSel, class = "Edge_Parameters")
-  expect_no_error(stepEdgeParSel(image = img, bandwidth = 2,
+  expect_no_error(parSel <- stepEdgeParSel(image = img, bandwidth = 2,
                                  thresh = c(0.1, 0.2), nboot = 1, degree = 0))
-  expect_no_error(stepEdgeParSel(image = img, bandwidth = 2,
+  expect_no_error(parSel <- stepEdgeParSel(image = img, bandwidth = 2,
                                  thresh = c(0.1, 0.2), nboot = 1, degree = 1,
                                  blur = TRUE))
-  expect_no_error(stepEdgeParSel(image = img, bandwidth = 2,
+  expect_no_error(parSel <- stepEdgeParSel(image = img, bandwidth = 2,
                                  thresh = c(0.1, 0.2), nboot = 1, degree = 0,
                                  blur = TRUE))
 })

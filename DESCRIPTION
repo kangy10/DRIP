@@ -24,7 +24,7 @@ Encoding: UTF-8
 LazyData: true
 NeedsCompilation: yes
 URL: https://miamioh.edu/fsb/directory/?up=/directory/kangy10, https://github.com/kangy10/DRIP
-BugReports: https://github.com/kangy10/DRIP
+BugReports: https://github.com/kangy10/DRIP/issues
 Suggests: 
     knitr,
     rmarkdown,
