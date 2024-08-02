@@ -30,7 +30,7 @@ stepEdgeParSelLLK <- function(image, bandwidth, thresh, nboot) {
   u <- as.double(thresh)
   nthresh <- length(u)
   out.mat <- array(0, c(nband, nthresh))
-  jp.llk <- JPLLK_surface(z, 2:7)
+  jp.llk <- JPLLK_surface(image = z, bandwidth = 2:7, plot = FALSE)
   fitted <- jp.llk$fitted
   resid <- jp.llk$resid
   imgs.boot <- array(0, c(n, n, nboot))
