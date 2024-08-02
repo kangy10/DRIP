@@ -70,8 +70,12 @@ test_that("only accept proper input", {
                "relwt must be a number between 0 and 1")
   set.seed(100)
   img <- matrix(rnorm(10^4), 100, 100)
-  expect_no_error(surfaceCluster_bandwidth(image = img, bandwidths = 3,
-                                           sig.level = 0.7, blur = FALSE))
-  expect_no_error(surfaceCluster_bandwidth(image = img, bandwidths = 3,
-                                           sig.level = 0.7, blur = TRUE))
+  expect_no_error(parsel <- surfaceCluster_bandwidth(image = img,
+                                                     bandwidths = 3,
+                                                     sig.level = 0.7,
+                                                     blur = FALSE))
+  expect_no_error(parsel <- surfaceCluster_bandwidth(image = img,
+                                                     bandwidths = 3,
+                                                     sig.level = 0.7,
+                                                     blur = TRUE))
 })

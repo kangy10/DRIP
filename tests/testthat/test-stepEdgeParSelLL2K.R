@@ -18,6 +18,6 @@ test_that("Only accept proper input", {
                "nboot must be a positive integer")
   set.seed(100)
   img <- matrix(rnorm(100), 10, 10)
-  expect_no_error(stepEdgeParSelLL2K(image = img, bandwidth = 2, thresh = 0.1,
-                                     nboot = 1))
+  expect_no_error(parsel <- stepEdgeParSelLL2K(image = img, bandwidth = 2,
+                                               thresh = 0.1, nboot = 1))
 })
