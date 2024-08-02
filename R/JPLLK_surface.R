@@ -64,7 +64,8 @@ JPLLK_surface <- function(image, bandwidth, plot = FALSE){
                     nband = n_band, bandwidth = as.integer(bandwidth),
                     cv = rep(as.double(0), n_band))
     k.cv <- out$cv
-    cv.band <- mean(bandwidth[k.cv ==  min(k.cv)])
+    #cv.band <- mean(bandwidth[k.cv ==  min(k.cv)])
+    cv.band <- bandwidth[which.min(k.cv)]
     jp.llk <- .Fortran(C_jp_llk_fit, n = as.integer(n1 - 1),
                       obsImg = z, bandwidth = as.integer(cv.band), fitted = z,
                       resid = z, sigma = as.double(0))
