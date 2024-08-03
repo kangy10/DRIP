@@ -40,7 +40,7 @@ test_that("only accept proper input", {
 
 test_that("return an S3 class Edge_Parameters", {
   edge1 <- stepEdge(image = sar, bandwidth = 10, thresh = 17)
-  set.seed(100)
+  set.seed(101)
   parSel <- roofEdgeParSel(image = sar, bandwidth = 10,
                            thresh = 800, nboot = 2, edge1 = edge1,
                            blur = FALSE)
