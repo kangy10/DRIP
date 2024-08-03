@@ -18,10 +18,8 @@ test_that("Only accept proper input", {
   expect_error(stepEdgeParSelLLK(image = matrix(0, 4, 4), bandwidth = 2,
                                  thresh = 0.1, nboot = 2:3),
                "nboot must be a positive integer")
-  set.seed(100)
-  img <- matrix(rnorm(100), 10, 10)
-  expect_no_error(parsel <- stepEdgeParSelLLK(image = img, bandwidth = 2,
-                                              thresh = 0.1, nboot = 1))
+  expect_no_error(parsel <- stepEdgeParSelLLK(image = sar, bandwidth = 10,
+                                               thresh = 17, nboot = 2))
 })
 
 print("This is the end of test-stepEdgeParSelLLK")
