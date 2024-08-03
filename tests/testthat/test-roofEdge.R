@@ -1,3 +1,5 @@
+print("This is the beginning of test-roofEdge")
+
 test_that("only accept proper input", {
   expect_error(roofEdge(image = matrix(0, 3, 4), bandwidth = 3, thresh = 17,
                         edge1 = matrix(0, 2, 2)),
@@ -33,3 +35,5 @@ test_that("only accept proper input", {
   expect_no_error(roofEdge(image = img, bandwidth = 2, thresh = 0.1,
                            edge1 = matrix(0, 9, 9), blur = TRUE))
 })
+
+print("This is the end of test-roofEdge")

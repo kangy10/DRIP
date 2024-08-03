@@ -1,3 +1,5 @@
+print("This is the beginning of test-surfaceCluster_bandwidth")
+
 test_that("only accept S3 class Surface_Cluster_Parameters", {
   foo <- list(cv_dataframe = data.frame(x = 1:2, y = 3:4),
               bandwidth = as.integer(3), sigma = 0.0, phi0 = 1.0,
@@ -79,3 +81,5 @@ test_that("only accept proper input", {
                                                      sig.level = 0.7,
                                                      blur = TRUE))
 })
+
+print("This is the end of test-surfaceCluster_bandwidth")

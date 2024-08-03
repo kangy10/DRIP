@@ -1,3 +1,5 @@
+print("This is the beginning of test-dKQ")
+
 test_that("only accept matrix of 0 or 1", {
   expect_error(dKQ(matrix(0, nrow = 2, ncol = 2), matrix(0.5, nrow = 2,
                                                          ncol = 2)),
@@ -17,3 +19,5 @@ test_that("return a numeric", {
   expect_true(is.double(dKQ(matrix(c(1, 0, 0, 1), 2, 2),
                             matrix(c(1, 1, 0, 0), 2, 2))))
 })
+
+print("This is the end of test-dKQ")

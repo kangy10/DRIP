@@ -1,3 +1,5 @@
+print("This is the beginning of test-jpex")
+
 test_that("only accept matrix as image input", {
   expect_error(jpex(image = 1:100, bandwidth = as.integer(2), sigma =
                       0.00623, alpha = 0.001), "image data must be a matrix")
@@ -26,3 +28,5 @@ test_that("only accept proper input", {
   img <- img + matrix(rnorm(9 * 9, sd = 0.1), 9, 9)
   expect_no_error(jpex(image = img, bandwidth = 2, sigma = 0.1, alpha = 0.1))
 })
+
+print("This is the end of test-jpex")

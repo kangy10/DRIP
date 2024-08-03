@@ -1,3 +1,5 @@
+print("This is the beginning of test-threeStageParSel")
+
 test_that("only accept S3 class Three_Stage_Parameters", {
   foo <- list(cv_scores = matrix(c(1.2, 1.3), nrow = 1),
               input = as.integer(3:4), bandwidth = as.integer(4))
@@ -99,3 +101,4 @@ test_that("edges and image are of the same size", {
                "different size in edge2 and image")
 })
 
+print("This is the end of test-threeStageParSel")

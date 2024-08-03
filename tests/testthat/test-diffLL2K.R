@@ -1,3 +1,5 @@
+print("This is the beginning of test-diffLL2K")
+
 test_that("only accept proper input", {
   expect_error(diffLL2K(image = 1:4, bandwidth = 2),
                "image data must be a matrix")
@@ -14,3 +16,5 @@ test_that("only accept proper input", {
   expect_no_error(diffLL2K(image = matrix(0, 3, 3), bandwidth = 1))
   expect_no_error(diffLL2K(image = matrix(0, 3, 3), bandwidth = 1, plot = TRUE))
 })
+
+print("This is the beginning of test-diffLL2K")

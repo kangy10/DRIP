@@ -1,3 +1,5 @@
+print("This is the beginning of test-stepEdgeLCK")
+
 test_that("only accept proper input", {
   expect_error(stepEdgeLCK(image = 1:16, bandwidth = 2, thresh = 0.1),
                "image data must be a matrix")
@@ -13,3 +15,5 @@ test_that("only accept proper input", {
   expect_no_error(stepEdgeLCK(image = matrix(0, 3, 3), bandwidth = 2,
                               thresh = 10, plot = TRUE))
 })
+
+print("This is the end of test-stepEdgeLCK")

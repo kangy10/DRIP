@@ -1,3 +1,5 @@
+print("This is the beginning of cv.jpex")
+
 test_that("check type argument works", {
   foo <- list(LLK = matrix(0.0, nrow = 2, ncol = 2), sigma = 0.0,
               cv_scores = c(1.2, 1.1), input = as.integer(3:4),
@@ -43,3 +45,5 @@ test_that("only accept proper input type", {
 #   out <- cv.jpex(img, c(2,3))
 #   expect_s3_class(out, class = "JPEX_Parameters", exact = TRUE)
 # })
+
+print("This is the end of cv.jpex")

@@ -1,3 +1,5 @@
+print("This is the beginning of test-modify1")
+
 test_that("only accept proper input", {
   expect_error(modify1(bandwidth = 2, image = 1:4, edge = matrix(0, 2, 2)),
                "obsImg must be a square matrix")
@@ -36,3 +38,5 @@ test_that("only accept proper input", {
   edge <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
   expect_no_error(modify1(4, sar, edge, plot = TRUE))
 })
+
+print("This is the end of test-modify1")

@@ -1,3 +1,5 @@
+print("This is the beginning of test-stepEdgeParSelLLK")
+
 test_that("Only accept proper input", {
   expect_error(stepEdgeParSelLLK(image = 1:4, bandwidth = 2, thresh = 0.1,
                                  nboot = 2), "image data must be a matrix")
@@ -21,3 +23,5 @@ test_that("Only accept proper input", {
   expect_no_error(parsel <- stepEdgeParSelLLK(image = img, bandwidth = 2,
                                               thresh = 0.1, nboot = 1))
 })
+
+print("This is the end of test-stepEdgeParSelLLK")

@@ -1,3 +1,5 @@
+print("This is the beginning of test-roofDiff")
+
 test_that("only accept matrix as image input", {
   expect_error(roofDiff(image = 1:4, bandwidth = 3),
                "image data must be a matrix")
@@ -12,3 +14,5 @@ test_that("only accept matrix as image input", {
   expect_no_error(roofDiff(image = img, bandwidth = 2, blur = FALSE))
   expect_no_error(roofDiff(image = img, bandwidth = 2, blur = TRUE))
 })
+
+print("This is the end of test-roofDiff")

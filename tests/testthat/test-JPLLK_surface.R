@@ -1,3 +1,5 @@
+print("This is the beginning of test-JPLLK_surface")
+
 test_that("only accept S3 class JPLLK_Parameters", {
   foo <- list(fitted = matrix(0.0, nrow = 2, ncol = 0), bandwidth = 3.0, resid
               = matrix(0.0, nrow = 2, ncol = 0), sigma = 0.0)

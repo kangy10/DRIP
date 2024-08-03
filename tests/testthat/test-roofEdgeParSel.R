@@ -1,3 +1,5 @@
+print("This is the beginning of test-roofEdgeParSel")
+
 test_that("only accept proper input", {
   expect_error(roofEdgeParSel(image = 1:4, bandwidth = 3, thresh = 17,
                               nboot = 2, edge1 = matrix(0, 2, 2)),
@@ -42,3 +44,5 @@ test_that("return an S3 class Edge_Parameters", {
                            blur = FALSE)
   expect_s3_class(parSel, "Edge_Parameters", exact = TRUE)
 })
+
+print("This is the end of test-roofEdgeParSel")

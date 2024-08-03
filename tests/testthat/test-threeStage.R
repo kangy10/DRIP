@@ -1,3 +1,5 @@
+print("This is the beginning of test-threeStage")
+
 test_that("only accept proper input", {
   expect_error(threeStage(image = 1:4, bandwidth = 3, edge1 = matrix(0, 2, 2),
                           edge2 = matrix(0, 2, 2)),
@@ -49,3 +51,5 @@ test_that("edges and image are of the same size", {
                           edge1 = matrix(0, 2, 2), edge2 = matrix(0, 3, 3)),
                "different size in edge2 and image")
 })
+
+print("This is the end of test-threeStage")

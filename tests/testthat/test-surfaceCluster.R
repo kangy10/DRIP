@@ -1,3 +1,5 @@
+print("This is the beginning of test-surfaceCluster")
+
 test_that("only accept proper input", {
   expect_error(surfaceCluster(image = 1:4, bandwidth = 4, sig.level = .9995,
                               cw = 3, blur = FALSE),
@@ -31,3 +33,5 @@ test_that("only accept proper input", {
   expect_no_error(surfaceCluster(image = img, bandwidth = 3, sig.level = 0.7,
                                  blur = TRUE, plot = TRUE))
 })
+
+print("This is the end of test-surfaceCluster")

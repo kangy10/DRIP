@@ -1,3 +1,5 @@
+print("This is the beginning of test-modify2")
+
 test_that("only accept proper input", {
   expect_error(modify2(bandwidth = 2, edge = 1:4),
                "edge must be a square matrix")
@@ -49,3 +51,5 @@ test_that("only accept proper input", {
   edge[5, 5] <- 1
   expect_no_error(modify2(bandwidth = 2, edge = edge, plot = TRUE))
 })
+
+print("This is the end of test-modify2")
