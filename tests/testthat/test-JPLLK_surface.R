@@ -46,3 +46,5 @@ test_that("only accept proper input", {
   expect_error(JPLLK_surface(image = matrix(1, 3, 3), bandwidth = "A"),
                "bandwidth must be numeric")
 })
+
+print("This is the end of test-JPLLK_surface")
