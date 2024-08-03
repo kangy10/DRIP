@@ -30,17 +30,19 @@ test_that("only accept proper input", {
   expect_error(roofEdgeParSel(image = matrix(0, 3, 3), bandwidth = 3,
                               thresh = 17, nboot = 2, edge1 = matrix(0, 2, 2)),
                "edge1 and image are not of the same size")
-  expect_no_error(parSel <- roofEdgeParSel(image = matrix(1:100, 10, 10),
-                                           bandwidth = 3, thresh = 0.1,
-                                           nboot = 2,
-                                           edge1 = matrix(0, 10, 10),
+  edge1 <- stepEdge(image = sar, bandwidth = 10, thresh = 17)
+  set.seed(100)
+  expect_no_error(parSel <- roofEdgeParSel(image = sar,
+                                           bandwidth = 10, thresh = 800,
+                                           nboot = 2, edge1 = edge1,
                                            blur = TRUE))
 })
 
 test_that("return an S3 class Edge_Parameters", {
+  edge1 <- stepEdge(image = sar, bandwidth = 10, thresh = 17)
   set.seed(100)
-  parSel <- roofEdgeParSel(image = matrix(rnorm(100), 10, 10), bandwidth = 3,
-                           thresh = 5, nboot = 1, edge1 = matrix(0, 10, 10),
+  parSel <- roofEdgeParSel(image = sar, bandwidth = 10,
+                           thresh = 800, nboot = 2, edge1 = edge1,
                            blur = FALSE)
   expect_s3_class(parSel, "Edge_Parameters", exact = TRUE)
 })
