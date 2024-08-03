@@ -34,6 +34,7 @@ test_that("only accept S3 class Three_Stage_Parameters", {
 })
 
 test_that("return an S3 class Three_Stage_Parameters", {
+  set.seed(100)
   parSel <- threeStageParSel(image = matrix(rnorm(100), 10, 10),
                              edge1 = matrix(0, 10, 10),
                              edge2 = matrix(0, 10, 10), bandwidth = 3:4,
@@ -75,17 +76,17 @@ test_that("only accept proper input", {
   img <- matrix(rnorm(100), 10, 10)
   expect_no_error(parsel <- threeStageParSel(image = img, bandwidth = 2:3,
                                              edge1 = matrix(0, 10, 10),
-                                             edge2 = matrix(0, 10, 10)))
-  edge1 <- matrix(0, 10, 10)
-  edge1[5:8, 5] <- 1
-  edge1[2, 2:4] <- 1
-  edge2 <- matrix(0, 10, 10)
-  edge2[5:8, 8] <- 1
-  edge2[7, 1:3] <- 1
-  expect_no_error(parsel <- threeStageParSel(image = img, bandwidth = 2:3,
-                                             edge1 = edge1, nboot = 1,
+                                             edge2 = matrix(0, 10, 10),
+                                             blur = FALSE))
+  edge1 <- stepEdge(image = sar, bandwidth = 10, thresh = 17, degree = 1,
+                    blur = FALSE, plot = TRUE)
+  edge2 <- roofEdge(image = sar, bandwidth = 10, thresh = 800, edge1 = edge1,
+                    blur = FALSE, plot = TRUE)
+  set.seed(100)
+  expect_no_error(parsel <- threeStageParSel(image = sar, bandwidth = c(5, 10),
+                                             edge1 = edge1, nboot = 2,
                                              edge2 = edge2, blur = TRUE))
-  expect_no_error(parsel <- threeStageParSel(image = img, bandwidth = 2:3,
+  expect_no_error(parsel <- threeStageParSel(image = sar, bandwidth = c(5, 10),
                                              edge1 = edge1, nboot = 1,
                                              edge2 = edge2, blur = FALSE))
 })
