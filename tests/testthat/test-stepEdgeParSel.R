@@ -18,7 +18,7 @@ test_that("accepts S3 Edge_Parameters only", {
 })
 
 test_that("returns S3 class Edge_Parameters", {
-  set.seed(100)
+  set.seed(101)
   img <- matrix(rnorm(100), 10, 10)
   parSel <- stepEdgeParSel(image = img, bandwidth = 2, thresh = c(0.1, 0.2),
                            nboot = 1)
