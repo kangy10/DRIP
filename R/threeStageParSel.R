@@ -10,9 +10,7 @@ class(foo) <- "Three_Stage_Parameters"
 
 # The print method for the S3 class
 
-print.Three_Stage_Parameters <- function(x,
-                                         type = c("cv_scores", "bandwidth",
-                                                  "all"), ...) {
+print.Three_Stage_Parameters <- function(x, type = "all", ...) {
   stopifnot(class(x) == "Three_Stage_Parameters")
   if (!(type %in% c("cv_scores", "bandwidth", "all"))) {
     stop("Wrong type value")
@@ -111,7 +109,7 @@ threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot,
     rownames(out.mat) <- "MSECV-score"
   }
 
-  print(paste('The selected bandwidth is', band_sel))
+  message(paste('The selected bandwidth is', band_sel))
   out1 <- list(cv_scores = out.mat, input = bandwidth, bandwidth = band_sel)
   class(out1) <- "Three_Stage_Parameters"
   return(out1)

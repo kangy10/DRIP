@@ -15,6 +15,7 @@ test_that("check the type value", {
   expect_no_error(print.Three_Stage_Parameters(foo, type = "cv_scores"))
   expect_no_error(print.Three_Stage_Parameters(foo, type = "bandwidth"))
   expect_no_error(print.Three_Stage_Parameters(foo, type = "all"))
+  expect_no_error(print.Three_Stage_Parameters(foo))
 })
 
 test_that("only accept S3 class Three_Stage_Parameters", {

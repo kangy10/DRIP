@@ -5,7 +5,7 @@
   Display information about a three-stage estimation bandwidth selection object.
 }
 \usage{
-\method{print}{Three_Stage_Parameters}(x, type = c("cv_scores", "bandwidth", "all"), ...)
+\method{print}{Three_Stage_Parameters}(x, type = "all", ...)
 }
 \arguments{
   \item{x}{A three-stage estimation bandwidth selection object.}
@@ -31,9 +31,9 @@
 }
 \examples{
 \dontrun{
-step.edges <- stepEdge(peppers, bandwidth = 9, thresh = 17) 
+step.edges <- stepEdge(peppers, bandwidth = 9, thresh = 17)
 roof.edges <- roofEdge(peppers, bandwidth = 6, thresh = 3000,
-    edge1 = step.edges) 
+    edge1 = step.edges)
 set.seed(24)
 # Time consuming
 parSel <- threeStageParSel(image = peppers, edge1 = step.edges,
@@ -43,7 +43,7 @@ print(parSel, type = "all")
 }
 \author{Yicheng Kang}
 \references{
-Qiu, P. and Kang, Y. (2015) ``Blind Image Deblurring Using Jump 
+Qiu, P. and Kang, Y. (2015) ``Blind Image Deblurring Using Jump
 Regression Analysis'', \emph{Statistica Sinica}, \bold{25},
 879 -- 899, \doi{10.5705/ss.2014.054}.
 }
