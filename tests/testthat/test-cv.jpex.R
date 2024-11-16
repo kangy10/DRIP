@@ -11,6 +11,7 @@ test_that("check type argument works", {
   expect_no_error(print.JPEX_Parameters(x = foo, type = "bandwidth"))
   expect_no_error(print.JPEX_Parameters(x = foo, type = "sigma"))
   expect_no_error(print.JPEX_Parameters(x = foo, type = "all"))
+  expect_no_error(print.JPEX_Parameters(x = foo))
 })
 
 test_that("accepts S3 JPEX_Parameters only", {

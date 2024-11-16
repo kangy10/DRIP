@@ -5,7 +5,7 @@
   Display information about a JPEX parameter selection object.
 }
 \usage{
-\method{print}{JPEX_Parameters}(x, type = c("cv_scores", "bandwidth", "sigma", "all"), ...)
+\method{print}{JPEX_Parameters}(x, type = "all", ...)
 }
 \arguments{
   \item{x}{A JPEX parameter selection object.}
@@ -23,7 +23,7 @@
     the selected bandwidth and estimated noise level.
 }
 \value{
-    A display of parameter selection results in JPEX estimation. 
+    A display of parameter selection results in JPEX estimation.
 }
 \seealso{
     \code{\link{cv.jpex}}

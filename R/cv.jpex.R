@@ -4,8 +4,7 @@ foo <- list(LLK = matrix(0.0, nrow = 2, ncol = 2), sigma = 0.0,
             bandwidth = as.integer(3))
 class(foo) <- "JPEX_Parameters"
 
-print.JPEX_Parameters <- function(x, type = c("cv_scores", "bandwidth",
-                                              "sigma", "all"), ...) {
+print.JPEX_Parameters <- function(x, type = "all", ...) {
   stopifnot(class(x) == "JPEX_Parameters")
   if (!(type %in% c("cv_scores", "bandwidth", "sigma", "all"))) {
     stop("Wrong type value.")
