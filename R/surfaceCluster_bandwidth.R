@@ -9,11 +9,7 @@ foo <- list(cv_dataframe = data.frame(x = 1:2, y = 3:4),
             mean_std_abs = 1.0)
 class(foo) <- "Surface_Cluster_Parameters"
 
-print.Surface_Cluster_Parameters <- function(x,
-                                             type = c("cv_scores", "bandwidth",
-                                                      "sigma", "phi0",
-                                                      "mean_std_abs", "all"),
-                                             ...) {
+print.Surface_Cluster_Parameters <- function(x, type = "all", ...) {
   stopifnot(class(x) == "Surface_Cluster_Parameters")
   if (!(type %in% c("cv_scores", "bandwidth", "sigma", "phi0", "mean_std_abs",
                     "all"))) {
