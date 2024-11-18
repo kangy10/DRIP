@@ -5,7 +5,7 @@
   Display information about a JPLLK parameter selection object.
 }
 \usage{
-\method{print}{JPLLK_Parameters}(x, type = c("bandwidth", "sigma", "all"), ...)
+\method{print}{JPLLK_Parameters}(x, type =  "all", ...)
 }
 \arguments{
   \item{x}{A JPLLK parameter selection object.}
@@ -21,13 +21,13 @@
     estimated noise level.
 }
 \value{
-    A display of parameter selection results in JPLLK estimation. 
+    A display of parameter selection results in JPLLK estimation.
 }
 \seealso{
     \code{\link{JPLLK_surface}}
 }
 \examples{
-fit <- JPLLK_surface(image=sar, bandwidth=c(3, 4))
+fit <- JPLLK_surface(image = sar, bandwidth = c(3, 4))
 print(fit, type = "bandwidth")
 }
 \author{Yicheng Kang}

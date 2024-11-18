@@ -109,7 +109,7 @@ threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot,
     rownames(out.mat) <- "MSECV-score"
   }
 
-  message(paste('The selected bandwidth is', band_sel))
+  # message(paste('The selected bandwidth is', band_sel))
   out1 <- list(cv_scores = out.mat, input = bandwidth, bandwidth = band_sel)
   class(out1) <- "Three_Stage_Parameters"
   return(out1)

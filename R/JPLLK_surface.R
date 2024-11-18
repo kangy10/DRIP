@@ -10,8 +10,7 @@ class(foo) <- "JPLLK_Parameters"
 
 # The print method for S3 class
 
-print.JPLLK_Parameters <- function(x, type = c("bandwidth", "sigma", "all"),
-                                   ...) {
+print.JPLLK_Parameters <- function(x, type = "all", ...) {
   stopifnot(class(x) == "JPLLK_Parameters")
   if (type == "bandwidth") {
     cat("The selected bandwidth: ", x$bandwidth, "\n")
