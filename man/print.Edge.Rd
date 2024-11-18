@@ -5,7 +5,7 @@
   Display information about an edge detection parameter selection object.
 }
 \usage{
-\method{print}{Edge_Parameters}(x, type = c("matrix", "parameters", "all"), ...)
+\method{print}{Edge_Parameters}(x, type = "all", ...)
 }
 \arguments{
   \item{x}{An edge detection parameter selection object.}
@@ -24,7 +24,7 @@
     threshold.
 }
 \value{
-    A display of parameter selection results in edge detection. 
+    A display of parameter selection results in edge detection.
 }
 \seealso{
     \code{\link{stepEdgeParSel}}, \code{\link{roofEdgeParSel}}
@@ -37,7 +37,7 @@ print(parSel, type = "all")
 }
 \author{Yicheng Kang}
 \references{
-Kang, Y. and Qiu, P. (2014) "Jump Detection in Blurred Regression 
+Kang, Y. and Qiu, P. (2014) "Jump Detection in Blurred Regression
 Surfaces," \emph{Technometrics}, \bold{56}(4), 539 -- 550,
 \doi{10.1080/00401706.2013.844732}.
 }

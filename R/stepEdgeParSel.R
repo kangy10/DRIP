@@ -11,8 +11,7 @@ class(foo) <- "Edge_Parameters"
 
 # The print method for S3 class
 
-print.Edge_Parameters <- function(x, type = c("matrix", "parameters", "all"),
-                                  ...) {
+print.Edge_Parameters <- function(x, type = "all", ...) {
   stopifnot(class(x) == "Edge_Parameters")
   if (!(type %in% c("matrix", "parameters", "all"))) {
     stop("Wrong type value")
