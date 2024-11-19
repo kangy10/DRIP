@@ -36,7 +36,7 @@ test_that("only accept S3 class JPLLK_Parameters", {
 test_that("An S3 class JPLLK_Parameters is returned", {
   fit <- JPLLK_surface(image = sar, bandwidth = c(3, 4), plot = FALSE)
   expect_identical(class(fit), "JPLLK_Parameters")
-  expect_no_error(parsel <- JPLLK_surface(image = matrix(0, 3, 3),
+  expect_no_error(parsel <- JPLLK_surface(image = matrix(0, 9, 9),
                                           bandwidth = 2, plot = TRUE))
 })
 
