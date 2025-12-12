@@ -1,9 +1,9 @@
-# This is R source code for function 'denoise3Stage', in the
+# This is R source code for function 'restore3Stage', in the
 # R package "image".
 # Date: May 7, 2013
 # Creator: Yicheng Kang
 
-denoise3Stage <- function(image, bandwidth, edge1, edge2,
+restore3Stage <- function(image, bandwidth, edge1, edge2,
                        blur = FALSE, plot = FALSE){
   if (!is.matrix(image) || !is.matrix(edge1) || !is.matrix(edge2)) {
     stop("image, edge1 and edge2 must be a matrix")

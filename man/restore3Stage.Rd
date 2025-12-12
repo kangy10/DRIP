@@ -1,12 +1,12 @@
-\name{denoise3Stage}
-\alias{denoise3Stage}
+\name{restore3Stage}
+\alias{restore3Stage}
 \title{Three-Stage Denoising and Deblurring}
 \description{
    Estimate jump location curves using local principal component
    lines. One-sided kernel smoothing is then used for surface
    estimation. Bandwidth is specified by the user.
 }
-\usage{denoise3Stage(image, bandwidth, edge1, edge2, 
+\usage{restore3Stage(image, bandwidth, edge1, edge2, 
     blur = FALSE, plot = FALSE)
 }
 \arguments{
@@ -47,7 +47,7 @@
 \examples{
 step.edges <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
 stepEdge1 <- modify2(bandwidth = 4, step.edges)
-fit <- denoise3Stage(image = sar, bandwidth = 4, edge1 = stepEdge1,
+fit <- restore3Stage(image = sar, bandwidth = 4, edge1 = stepEdge1,
     edge2 = array(0, rep(ncol(sar), 2)))
 }
 \author{Yicheng Kang}

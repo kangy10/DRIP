@@ -59,7 +59,7 @@ surfaceCluster_bandwidth(image, bandwidths, sig.level, sigma,
     distribution.
 }
 \seealso{
-    \code{\link{JPLLK_surface}}, \code{\link{denoise3Stage}}
+    \code{\link{JPLLK_surface}}, \code{\link{restore3Stage}}
 }
 \examples{
 data(brain) 
