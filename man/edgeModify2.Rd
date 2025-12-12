@@ -1,10 +1,10 @@
-\name{modify2}
-\alias{modify2}
+\name{edgeModify2}
+\alias{edgeModify2}
 \title{Type-2 Modification Procedure}
 \description{
    Delete deceptive edge pixels that are scattered in the design space.
 }
-\usage{modify2(bandwidth, edge, plot)}
+\usage{edgeModify2(bandwidth, edge, plot)}
 \arguments{
     \item{bandwidth}{A positive integer that specifies the number of
     pixels to use in the local smoothing.}
@@ -30,7 +30,7 @@
 }
 \examples{
 edge <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
-out <- modify2(4, edge)
+out <- edgeModify2(4, edge)
 }
 \author{Yicheng Kang}
 \references{

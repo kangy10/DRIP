@@ -6,7 +6,7 @@
    lines. One-sided kernel smoothing is then used for surface
    estimation. Bandwidth is specified by the user.
 }
-\usage{restore3Stage(image, bandwidth, edge1, edge2, 
+\usage{restore3Stage(image, bandwidth, edge1, edge2,
     blur = FALSE, plot = FALSE)
 }
 \arguments{
@@ -46,13 +46,13 @@
 }
 \examples{
 step.edges <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
-stepEdge1 <- modify2(bandwidth = 4, step.edges)
+stepEdge1 <- edgeModify2(bandwidth = 4, step.edges)
 fit <- restore3Stage(image = sar, bandwidth = 4, edge1 = stepEdge1,
     edge2 = array(0, rep(ncol(sar), 2)))
 }
 \author{Yicheng Kang}
 \references{
-Qiu, P. and Kang, Y. (2015) ``Blind Image Deblurring Using Jump 
+Qiu, P. and Kang, Y. (2015) ``Blind Image Deblurring Using Jump
 Regression Analysis'', \emph{Statistica Sinica}, \bold{25},
 879 -- 899, \doi{10.5705/ss.2014.054}.
 }

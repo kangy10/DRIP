@@ -30,7 +30,7 @@ edgeModify1(bandwidth, image, edge, plot)
     thin.
 }
 \seealso{
-    \code{\link{modify2}}
+    \code{\link{edgeModify2}}
 }
 \examples{
 edge <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
