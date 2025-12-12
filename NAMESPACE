@@ -2,7 +2,7 @@ useDynLib("DRIP", .registration = TRUE, .fixes = "C_")
 
 export(stepDiff, stepEdge, stepEdgeParSel, JPLLK_surface, dKQ,
        surfaceCluster, surfaceCluster_bandwidth, roofDiff,
-       roofEdge, roofEdgeParSel, threeStage, threeStageParSel,
+       roofEdge, roofEdgeParSel, denoise3Stage, threeStageParSel,
        cv.jpex, jpex, modify1, modify2)
 
 S3method(print, Edge_Parameters)

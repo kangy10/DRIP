@@ -1,6 +1,6 @@
 Package: DRIP
 License: GPL (>= 2)
-Version: 2.3
+Version: 2.4
 Description: A collection of functions that perform jump regression
 	     and image analysis such as denoising, deblurring and
 	     jump detection. The implemented methods are based on

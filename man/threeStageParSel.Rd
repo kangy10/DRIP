@@ -3,7 +3,7 @@
 \title{Parameter Selection in Three-Stage Image Restoration}
 \description{
     Select the bandwidth value for the image restoration method
-    implemented in the function \code{\link{threeStage}}
+    implemented in the function \code{\link{denoise3Stage}}
 }
 \usage{
 threeStageParSel(image, bandwidth, edge1, edge2, nboot,

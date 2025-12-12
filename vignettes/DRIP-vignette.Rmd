@@ -50,9 +50,9 @@ quantile(c(diffllk), probs = c(0.75, 0.85, 0.95))
 ```
 
 # Image Denoising
-The `threeStage()` function in the package implements a three-stage approach for image denoising. The detected step edges are supplied using the argument `edge1`. Notably, users can also input the detected roof edges using the argument `edge2`. The resulting estimator preserves both step and roof edges of the image. In cases where roof edge detection is deemed unnecessary, users can simply provide a matrix of zeros to `edge2`. The code below shows the estimated SAR image after applying `threeStage()`. It can be seen that the estimation preserves the discontinuities at places where edges have been successfully detected. At places where the edge detector fails to flag the edge points, the estimation still blurs the jumps. 
+The `denoise3Stage()` function in the package implements a three-stage approach for image denoising. The detected step edges are supplied using the argument `edge1`. Notably, users can also input the detected roof edges using the argument `edge2`. The resulting estimator preserves both step and roof edges of the image. In cases where roof edge detection is deemed unnecessary, users can simply provide a matrix of zeros to `edge2`. The code below shows the estimated SAR image after applying `denoise3Stage()`. It can be seen that the estimation preserves the discontinuities at places where edges have been successfully detected. At places where the edge detector fails to flag the edge points, the estimation still blurs the jumps. 
 ```{r three-stage}
-fit <- threeStage(image = sar, bandwidth = 4, edge1 = stepedge, 
+fit <- denoise3Stage(image = sar, bandwidth = 4, edge1 = stepedge, 
                   edge2 = array(0, dim(sar)))
 par(mfrow = c(1, 1), mar = c(3, 1, 1, 1), xaxt = "n", yaxt = "n")
 image(fit, col = gray(c(0:255)/255))
