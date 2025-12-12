@@ -58,9 +58,9 @@ par(mfrow = c(1, 1), mar = c(3, 1, 1, 1), xaxt = "n", yaxt = "n")
 image(fit, col = gray(c(0:255)/255))
 ```
 
-This three-stage approach requires a bandwidth parameter. It can be selected by minimizing the leave-one-out cross validation score. The `threeStageParSel()` function implements the cross validation procedure.
+This three-stage approach requires a bandwidth parameter. It can be selected by minimizing the leave-one-out cross validation score. The `restore3StageParSel()` function implements the cross validation procedure.
 ```{r}
-bw_3stage <- threeStageParSel(image = sar, bandwidth = 4:5, 
+bw_3stage <- restore3StageParSel(image = sar, bandwidth = 4:5, 
                               edge1 = stepedge, 
                               edge2 = array(0, dim(sar)))
 print(bw_3stage, type = "all")

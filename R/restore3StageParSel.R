@@ -1,4 +1,4 @@
-# This is R source code for function 'threeStageParSel', in the
+# This is R source code for function 'restore3StageParSel', in the
 # R package "image".
 # Date: Aug 30, 2015
 # Creator: Yicheng Kang
@@ -47,7 +47,7 @@ plot.Three_Stage_Parameters <- function(x, ...) {
                ylab = "(MSE)CV Scores")
 }
 
-threeStageParSel <- function(image, bandwidth, edge1, edge2, nboot,
+restore3StageParSel <- function(image, bandwidth, edge1, edge2, nboot,
                              blur = FALSE){
   if (!is.matrix(image) || !is.matrix(edge1) || !is.matrix(edge2)) {
     stop("image, edge1 and edge2 must be a matrix")

@@ -1,12 +1,12 @@
-\name{threeStageParSel}
-\alias{threeStageParSel}
+\name{restore3StageParSel}
+\alias{restore3StageParSel}
 \title{Parameter Selection in Three-Stage Image Restoration}
 \description{
     Select the bandwidth value for the image restoration method
     implemented in the function \code{\link{restore3Stage}}
 }
 \usage{
-threeStageParSel(image, bandwidth, edge1, edge2, nboot,
+restore3StageParSel(image, bandwidth, edge1, edge2, nboot,
     blur = FALSE)
 }
 \arguments{
@@ -38,7 +38,7 @@ roof.edges <- roofEdge(peppers, bandwidth = 6, thresh = 3000,
     edge1 = step.edges) 
 set.seed(24)
 # Time consuming
-parSel <- threeStageParSel(image = peppers, edge1 = step.edges,
+parSel <- restore3StageParSel(image = peppers, edge1 = step.edges,
     edge2 = roof.edges, bandwidth = 3:4, nboot = 1, blur = TRUE) 
 }
 }
