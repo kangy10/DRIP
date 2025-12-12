@@ -8,7 +8,7 @@
 \arguments{
     \item{bandwidth}{A positive integer that specifies the number of
     pixels to use in the local smoothing.}
-    \item{edge}{A matrix of 0 and 1 representing the detected edge 
+    \item{edge}{A matrix of 0 and 1 representing the detected edge
     pixels.}
     \item{plot}{If plot = TRUE, images of the detected edges before
     and after the modification are plotted.}
@@ -26,7 +26,7 @@
     space. This modification procedure deletes scattered edge pixel candidates.
 }
 \seealso{
-    \code{\link{modify1}}
+    \code{\link{edgeModify1}}
 }
 \examples{
 edge <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
