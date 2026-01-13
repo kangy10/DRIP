@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/kangy10/DRIP/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kangy10/DRIP/actions/workflows/R-CMD-check.yaml)
-[![Codecov](https://codecov.io/gh/kangy10/DRIP/branch/main/graph/badge.svg)](https://codecov.io/gh/kangy10/DRIP)
+[![Codecov](https://codecov.io/gh/kangy10/DRIP/branch/main/graph/badge.svg)](https://app.codecov.io/gh/kangy10/DRIP)
 <!-- badges: end -->
 
 DRIP is a collection of functions for edge detection, image denoising
