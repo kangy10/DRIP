@@ -6,17 +6,20 @@
    lines. One-sided kernel smoothing is then used for surface
    estimation. Bandwidth is specified by the user.
 }
-\usage{restore3Stage(image, bandwidth, edge1, edge2,
-    blur = FALSE, plot = FALSE)
+\usage{restore3Stage(image, bandwidth, step_edge = NULL,
+roof_edge = NULL, edge1 = NULL, edge2 = NULL, blur = FALSE,
+plot = FALSE)
 }
 \arguments{
     \item{image}{A square matrix, no missing value allowed.}
     \item{bandwidth}{A positive integer that specifies the number
     of pixels to use in the local smoothing.}
-    \item{edge1}{A matrix of 0 and 1 representing the detected
+    \item{step_edge}{A matrix of 0 and 1 representing the detected
     step edge pixels}
-    \item{edge2}{A matrix of 0 and 1 representing the detected
+    \item{roof_edge}{A matrix of 0 and 1 representing the detected
     roof/valley edge pixels}
+    \item{edge1}{Deprecated. Use \code{step_edge} instead.}
+    \item{edge2}{Deprecated. Use \code{roof_edge} instead.}
     \item{blur}{If blur = TRUE, besides a conventional 2-D kernel
     function, a univariate increasing kernel function is used in
     the local kernel smoothing to address the issue with blur.}
@@ -47,8 +50,8 @@
 \examples{
 step.edges <- stepEdge(sar, bandwidth = 4, thresh = 20, degree = 0)
 stepEdge1 <- edgeModify2(bandwidth = 4, step.edges)
-fit <- restore3Stage(image = sar, bandwidth = 4, edge1 = stepEdge1,
-    edge2 = array(0, rep(ncol(sar), 2)))
+fit <- restore3Stage(image = sar, bandwidth = 4, step_edge = stepEdge1,
+    roof_edge = array(0, rep(ncol(sar), 2)))
 }
 \author{Yicheng Kang}
 \references{

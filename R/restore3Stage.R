@@ -3,10 +3,16 @@
 # Date: May 7, 2013
 # Creator: Yicheng Kang
 
-restore3Stage <- function(image, bandwidth, edge1, edge2,
+restore3Stage <- function(image, bandwidth, step_edge = NULL, roof_edge = NULL, edge1 = NULL, edge2 = NULL,
                        blur = FALSE, plot = FALSE){
-  if (!is.matrix(image) || !is.matrix(edge1) || !is.matrix(edge2)) {
-    stop("image, edge1 and edge2 must be a matrix")
+  if (!is.null(edge1)) {
+    step_edge <- edge1
+  }
+  if (!is.null(edge2)) {
+    roof_edge <- edge2
+  }
+  if (!is.matrix(image) || !is.matrix(step_edge) || !is.matrix(roof_edge)) {
+    stop("image, step_edge and roof_edge must be a matrix")
   } else {
     n1 <- dim(image)[1]
     n2 <- dim(image)[2]
@@ -24,26 +30,26 @@ restore3Stage <- function(image, bandwidth, edge1, edge2,
   n1 <- dim(image)[1]
   z <- matrix(as.double(image), ncol = n1)
   k <- as.integer(bandwidth)
-  if (nrow(edge1) != n1 || ncol(edge1) != n1) {
-    stop("different size in edge1 and image")
+  if (nrow(step_edge) != n1 || ncol(step_edge) != n1) {
+    stop("different size in step_edge and image")
   }
-  if (nrow(edge2) != n1 || ncol(edge2) != n1) {
-    stop("different size in edge2 and image")
+  if (nrow(roof_edge) != n1 || ncol(roof_edge) != n1) {
+    stop("different size in roof_edge and image")
   }
-  if(!all(edge1 == 0 | edge1 == 1))
-    stop("edge1 must be either 0 or 1.")
-  if(!all(edge2 == 0 | edge2 == 1))
-    stop("edge2 must be either 0 or 1.")
-  edge1 <- matrix(as.integer(edge1), ncol = n1)
-  edge2 <- matrix(as.integer(edge2), ncol = n2)
+  if(!all(step_edge == 0 | step_edge == 1))
+    stop("step_edge must be either 0 or 1.")
+  if(!all(roof_edge == 0 | roof_edge == 1))
+    stop("roof_edge must be either 0 or 1.")
+  step_edge <- matrix(as.integer(step_edge), ncol = n1)
+  roof_edge <- matrix(as.integer(roof_edge), ncol = n2)
   if (blur == TRUE) {
     out <- .Fortran(C_deblur_3stage, n = as.integer(n1 - 1),
-                    obsImg = z, bandwidth = k, edge1 = edge1, edge2 = edge2,
+                    obsImg = z, bandwidth = k, edge1 = step_edge, edge2 = roof_edge,
                     estImg = z)
   }
   else {
     out <- .Fortran(C_denoise_3stage, n = as.integer(n1 - 1),
-                    obsImg = z, bandwidth = k, edge1 = edge1, edge2 = edge2,
+                    obsImg = z, bandwidth = k, edge1 = step_edge, edge2 = roof_edge,
                     estImg = z)
   }
 

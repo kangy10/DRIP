@@ -3,7 +3,7 @@ print("This is the beginning of test-restore3Stage")
 test_that("only accept proper input", {
   expect_error(restore3Stage(image = 1:4, bandwidth = 3, edge1 = matrix(0, 2, 2),
                           edge2 = matrix(0, 2, 2)),
-               "image, edge1 and edge2 must be a matrix")
+               "image, step_edge and roof_edge must be a matrix")
   expect_error(restore3Stage(image = matrix(0, 2, 3), bandwidth = 3,
                           edge1 = matrix(0, 2, 2), edge2 = matrix(0, 2, 2)),
                "image data must be a square matrix")
@@ -15,10 +15,10 @@ test_that("only accept proper input", {
                "bandwidth must be a positive integer")
   expect_error(restore3Stage(image = matrix(0, 2, 2), bandwidth = 2,
                           edge1 = matrix(1.2, 2, 2), edge2 = matrix(0, 2, 2)),
-               "edge1 must be either 0 or 1")
+               "step_edge must be either 0 or 1")
   expect_error(restore3Stage(image = matrix(0, 2, 2), bandwidth = 2,
                           edge1 = matrix(0, 2, 2), edge2 = matrix(1.2, 2, 2)),
-               "edge2 must be either 0 or 1")
+               "roof_edge must be either 0 or 1")
   edge1 <- matrix(0, 10, 10)
   edge1[, 5] <- 1
   edge1[5, ] <- 1
@@ -46,10 +46,10 @@ test_that("only accept proper input", {
 test_that("edges and image are of the same size", {
   expect_error(restore3Stage(image = matrix(1:4, 2, 2), bandwidth = 3,
                           edge1 = matrix(0, 3, 3), edge2 = matrix(0, 2, 2)),
-               "different size in edge1 and image")
+               "different size in step_edge and image")
   expect_error(restore3Stage(image = matrix(1:4, 2, 2), bandwidth = 3,
                           edge1 = matrix(0, 2, 2), edge2 = matrix(0, 3, 3)),
-               "different size in edge2 and image")
+               "different size in roof_edge and image")
 })
 
 print("This is the end of test-restore3Stage")
