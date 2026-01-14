@@ -52,8 +52,8 @@ print(parSel, type = "all")
 # Image Denoising
 The `restore3Stage()` function in the package implements a three-stage approach for image denoising. The detected step edges are supplied using the argument `edge1`. Notably, users can also input the detected roof edges using the argument `edge2`. The resulting estimator preserves both step and roof edges of the image. In cases where roof edge detection is deemed unnecessary, users can simply provide a matrix of zeros to `edge2`. The code below shows the estimated SAR image after applying `restore3Stage()`. It can be seen that the estimation preserves the discontinuities at places where edges have been successfully detected. At places where the edge detector fails to flag the edge points, the estimation still blurs the jumps. 
 ```{r three-stage}
-fit <- restore3Stage(image = sar, bandwidth = 4, edge1 = stepedge, 
-                  edge2 = array(0, dim(sar)))
+fit <- restore3Stage(image = sar, bandwidth = 4, step_edge = stepedge, 
+                  roof_edge = array(0, dim(sar)))
 par(mfrow = c(1, 1), mar = c(3, 1, 1, 1), xaxt = "n", yaxt = "n")
 image(fit, col = gray(c(0:255)/255))
 ```
@@ -61,8 +61,8 @@ image(fit, col = gray(c(0:255)/255))
 This three-stage approach requires a bandwidth parameter. It can be selected by minimizing the leave-one-out cross validation score. The `restore3StageParSel()` function implements the cross validation procedure.
 ```{r}
 bw_3stage <- restore3StageParSel(image = sar, bandwidth = 4:5, 
-                              edge1 = stepedge, 
-                              edge2 = array(0, dim(sar)))
+                              step_edge = stepedge, 
+                              roof_edge = array(0, dim(sar)))
 print(bw_3stage, type = "all")
 ```
 
