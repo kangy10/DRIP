@@ -19,10 +19,10 @@ test_that("output test -- detect step edges as expected", {
   edge <- matrix(0, 100, 100)
   edge[50, ] <- 1
   res <- dKQ(edge, edgehat)
-  expect_equal(ifelse(abs(res) < 2.0/nrow(testImg), 0, 1), 0) # The Hausdorff distance is bounded by bandwidth
+  expect_lte(abs(res), 2.0/nrow(testImg)) # The Hausdorff distance is bounded by bandwidth
   edgehat1 <- stepEdge(image = testImg, bandwidth = 3, thresh = 0.3, degree = 1, plot = TRUE)
   res1 <- dKQ(edge, edgehat1)
-  expect_equal(ifelse(abs(res1) < 3.0/nrow(testImg), 0, 1), 0) # The Hausdorff distance is bounded by bandwidth
+  expect_lte(abs(res1), 3.0/nrow(testImg)) # The Hausdorff distance is bounded by bandwidth
 })
 
 print("This is the end of test-stepEdge")
