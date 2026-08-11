@@ -15,7 +15,7 @@ test_that("degree either 0 or 1", {
 test_that("output test -- detect step edges as expected", {
   testImg <- matrix(0, 100, 100)
   testImg[50:100, ] <- 1
-  edgehat <- stepEdge(image = testImg, bandwidth = 2, thresh = 1, degree = 0, plot = FALSE)
+  edgehat <- stepEdge(image = testImg, bandwidth = 2, thresh = 0.3, degree = 0, plot = FALSE)
   edge <- matrix(0, 100, 100)
   edge[50, ] <- 1
   res <- dKQ(edge, edgehat)
